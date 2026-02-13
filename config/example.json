@@ -1,0 +1,38 @@
+{
+  "aws": {
+    "account": "123456789012",
+    "region": "us-east-2"
+  },
+  "S3TablesEmrServerless": {
+    "vpc": {
+      "cidr": "10.0.0.0/16",
+      "natGateways": 1,
+      "privateSubnetCidrMask": 20,
+      "publicSubnetCidrMask": 24,
+      "azCount": 2
+    },
+    "s3Tables": {
+      "tableBucketName": "customer-iceberg-table-bucket"
+    },
+    "emrServerless": {
+      "applicationName": "customer-spark-app",
+      "releaseLabel": "emr-7.12.0",
+      "usePrivateSubnets": true,
+      "jobArtifactsBucketName": "customer-emr-job-artifacts",
+      "jobLogsBucketName": "customer-emr-job-logs",
+      "executionRoleName": "customer-emr-serverless-execution-role",
+      "initialCapacityEnabled": false,
+      "maximumCapacity": {
+        "cpu": "100 vCPU",
+        "memory": "400 GB"
+      }
+    }
+  },
+  "OleanderIAM": {
+    "organizationId": "org_1234567890abcdef",
+    "roleNames": {
+      "s3tablesAccessRole": "oleander-s3tables-access-role",
+      "emrControllerRole": "oleander-emr-serverless-controller-role"
+    }
+  }
+}
